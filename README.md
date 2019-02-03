@@ -53,7 +53,7 @@ Please open a command line and run the following:
 
 * You can use Postman to test the application.
 
-* "Post" examples to create the new cars:
+* "Post" examples to ```http://localhost:8080/cars``` for new cars creating:
 ```
 {"classification":"B","make":"USA","model":"BMW","mileage":1199,"booked":true}
 ```
