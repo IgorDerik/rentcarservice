@@ -1,9 +1,9 @@
 package com.rentcar.service;
 
 import static org.junit.Assert.*;
-import static org.hamcrest.core.Is.is;
 
 import com.rentcar.domain.Car;
+import com.rentcar.domain.Status;
 import com.rentcar.service.CarService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -34,6 +34,15 @@ public class CarServiceTest {
         Optional<Car> optionalCar = this.service.getCarByUid(car.getUid());
         Car result = optionalCar.orElse(null);
         assertEquals(car,result);
+    }
+
+    @Test
+    public void checkIfCarBookingStatusChanged() {
+        Car car = this.service.add(new Car("A","UKR","FUTURE",100,true));
+        this.service.setBookingStatus(new Status(false), car.getUid());
+        Optional<Car> optionalCar = this.service.getCarByUid(car.getUid());
+        assert optionalCar.isPresent();
+        assertFalse(optionalCar.get().isBooked());
     }
 
 }
