@@ -5,6 +5,9 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 import java.util.Objects;
 
+/**
+ * Class representing a car
+ */
 @Entity(name = "car")
 public class Car {
 

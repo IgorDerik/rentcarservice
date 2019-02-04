@@ -1,5 +1,8 @@
 package com.rentcar.domain;
 
+/**
+ * Class representing booking status
+ */
 public class Status {
 
     private boolean booked;
