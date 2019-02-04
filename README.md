@@ -10,10 +10,7 @@ model: string
 mileage: number
 booked: boolean
 ```
-Responses with a JSON that includes the car’s UID:
-```
-uid: string
-```
+Responses with a JSON that includes the car’s UID: ```uid: string```
 
 * GET /cars - returns a list of cars in JSON format with all the properties including uid
 
@@ -21,10 +18,7 @@ uid: string
 
 * GET /cars/available - returns list of all available cars
 
-* POST /cars/{uid} - changes status, retrieves JSON with booking status:
-```
-booked: boolean
-```
+* POST /cars/{uid} - changes status, retrieves JSON with booking status: ```booked: boolean```
 
 If the car uid doesn’t exist, then the web service responses with 404 http status code.
 
@@ -43,11 +37,11 @@ Please open a command line and run the following:
 
 * mvn clean install (in rentcarservice directory)
 
-* java -jar path-to-the-generated-by-maven-jar-file.jar
+* java -jar path-to-the-generated-by-maven-jar-file.jar (in project target folder)
 
 ## Additional info
 
-* By default service should be running on http://localhost:8080
+* By default service should be running on ```http://localhost:8080```
 
 * Service developed mostly with Spring Boot and JPA
 
