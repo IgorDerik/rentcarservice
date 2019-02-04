@@ -9,9 +9,9 @@ make: string
 model: string
 mileage: number
 booked: boolean
-```
-Responses with a JSON that includes the car’s UID: ```uid: string```
 
+Responses with a JSON that includes the car’s UID: uid: string
+```
 * GET /cars - returns a list of cars in JSON format with all the properties including uid
 
 * GET /cars/{uid} - returns a car by uid
