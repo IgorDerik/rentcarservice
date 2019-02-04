@@ -12,9 +12,11 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.junit.Test;
 
@@ -46,5 +48,22 @@ public class CarControllerTest {
         this.mvc.perform(get("/cars").accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(content().string(mapper.writeValueAsString(list)));
+    }
+
+    @Test
+    public void getAvailable() throws Exception {
+        List<Car> list = new ArrayList<>();
+        list.add(new Car("A","UKR","FUTURE",100,true));
+        list.add(new Car("B","USA","VOLVO",999,false));
+        list.add(new Car("C","CHINA","BMW",111,true));
+        list.add(new Car("D","SPAIN","WOLF",222,false));
+        list.forEach( car -> this.cars.add(car) );
+        List<Car> availableList = list.stream().filter(car -> !car.isBooked()).collect(Collectors.toList());
+        given(this.cars.getAvailable()).willReturn(availableList);
+        ObjectMapper mapper = new ObjectMapper();
+
+        this.mvc.perform(get("/cars/available").accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(content().string(mapper.writeValueAsString(availableList)));
     }
 }
